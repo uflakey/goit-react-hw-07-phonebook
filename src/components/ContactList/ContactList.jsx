@@ -1,15 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'slice/contactsSlice';
 import { selectAddContact } from 'slice/selector';
 import css from './ContactList.module.css';
+import { fetchDeleteContactThunk } from 'slice/thunk';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectAddContact);
 
   const onDelete = id => {
-    dispatch(deleteContact(id));
+    dispatch(fetchDeleteContactThunk(id));
   };
 
   return (

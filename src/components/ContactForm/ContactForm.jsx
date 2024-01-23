@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'slice/contactsSlice';
 import { selectContact } from 'slice/selector';
 import css from './ContactForm.module.css';
 import { nanoid } from 'nanoid';
+import { fetchAddContactThunk } from 'slice/thunk';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ export const ContactForm = () => {
       return;
     }
 
-    dispatch(addContact({ ...formData, id: nanoid() }));
+    dispatch(fetchAddContactThunk({ ...formData, id: nanoid() }));
     setFormData({ name: '', number: '' });
   };
 
